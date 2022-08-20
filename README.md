@@ -1,6 +1,6 @@
 # TheHouse
 
-IN PROCESS - All menus, prizes & purchasing functionality, account tracking & 1/4 mini-games implemented and functioning
+IN PROCESS - All menus, prizes & purchasing functionality, account tracking & 1/4 mini-games implemented and functioning.
 
 The House gives the user/player 100 tokens and tracks a running balance which they can use to bet on 1 of 4 different mini-games of chance and purchase prizes.
 
@@ -15,28 +15,28 @@ If you can turn 100 tokens into 10,000, you can use your tokens to obtain a Winn
 certifying, definitively, that you have what it takes to BEAT THE HOUSE.
 """
 
-(fully implemented) The Ten Sided Die of Doom
+(fully implemented) The Ten Sided Die of Doom: 
 In the The Ten Sided Die of Doom, players bet on the outcome of a ten-sided die roll.
 Choose a range by selecting a low and high value, and an amount that you would like to bet.
 If the ten-sided die roll falls within your selected range, you win! If not, your bet amount is lost.
 Keep in mind - the smaller the range you select, the greater your reward!
 In order to win big, you have to risk big.
 
-(pending implementation) The Un-Flipping-Believable Coin
+(pending implementation) The Un-Flipping-Believable Coin: 
 In the The The Un-Flipping-Believable Coin, players bet on the outcome of a simple coin toss,
 with the potential to grow your account balance exponentially - Un-Flipping-Believable!
 Every time you correctly guess the outcome of a coin toss, your return doubles.
 But watch out - as soon as you miss a coin toss, you lose everything you've gained,
 plus your original bet.
 
-(pending implementation) Not Your Average Slots
+(pending implementation) Not Your Average Slots: 
 In Not Your Average Slots, players place 5 combined bets on the outcome of a slot machine,
 with the potential to win five different ways! The five rows of the slot machine contain
 shapes, colors, numbers, letters, and animals. The player will bet on the result of each one.
 Correctly guessing any one of them wins the bet! The more you guess right - the higher the win!
 But watch out; If you miss all five, your bet goes to The House.
 
-(pending implementatation) Twenty-Sided Higher Or Lower
+(pending implementatation) Twenty-Sided Higher Or Lower: 
 In Twenty-Sided Higher Or Lower, players bet whether the next roll of a 20-sided die
 will be higher or lower than the last roll. This is the only game that allows players to maintain
 a statistical advantage. As such, each win will return your bet, but your winnings will not multiply.
