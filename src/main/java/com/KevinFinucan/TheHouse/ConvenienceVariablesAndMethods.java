@@ -18,8 +18,8 @@ public class ConvenienceVariablesAndMethods {
                         You have been credited an account with 100 tokens.
                         Use your tokens to bet on any of our 4 nerve-wracking games of chance on your way to beating the odds.
                         Or, use your tokens to collect our marvellous prizes - proof that you beat The House (or at least got a consolation gift).
-                        If you can turn 100 tokens into 10,000, you can use your tokens to obtain a Winner's 'I beat the House' Trophy
-                        certifying, definitely, that you have what it takes to BEAT THE HOUSE.
+                        If you can turn 100 tokens into 10,000, you can use your tokens to obtain a Winner's 'I beat the House' Trophy,
+                        certifying, definitively, that you have what it takes to BEAT THE HOUSE.
                         """;
 
     private static final String GAME_MENU =
