@@ -75,14 +75,16 @@ public class TheUnFlippingBelievableCoin implements Game {
             isWinner = flipCoinAndSetIsWInner();
             if (isWinner) {
                 winnings *= 2;
+                winningsRolledForward = true;
+            } // Redefined to allow player to place a fresh bet if replaying after a loss
+            else { winningsRolledForward = false;
             }
             updatedBalance = convenience.executeWinLossResults(winnings, currentBalance, betAmount, isWinner);
             betLocked = false; // redefined to allow the player to reset their bet in additional rounds
-            System.out.println("Would you like to roll your bet forward for a chance to double your winnings?: ");
+            playAgainPrompt(isWinner);
             String playAgain = convenience.promptForYesNo(userInput);
-            switch (playAgain) {
-                case "y" -> winningsRolledForward = true;
-                case "n" -> isPlaying = false; // Additional rounds is the default
+            if (playAgain.equals("n")) {
+                isPlaying = false; // Additional rounds is the default
             }
         }
         return updatedBalance;
@@ -92,7 +94,7 @@ public class TheUnFlippingBelievableCoin implements Game {
     public String promptForHeadsOrTails(Scanner userInput) {
         String response = "";
         while (response.equals("")) {
-            System.out.println("Enter 'Heads' or 'Tails' (H/T): ");
+            System.out.println("Place your coin flip bet. Enter 'Heads' or 'Tails' (H/T): ");
             // Any string starting with 'H/h' is assumed to be heads
             // Any string starting with 'T/t' is assumed to be tails
             response = userInput.nextLine().substring(0, 1).toLowerCase();
@@ -123,6 +125,15 @@ public class TheUnFlippingBelievableCoin implements Game {
         }
         System.out.println("The House flipped: " + coinFlipResults);
         return (coinFlipBet.equals(coinFlipResults));
+    }
+
+    public void playAgainPrompt(boolean isWinner) {
+        if (isWinner) {
+            System.out.println(
+                    "Would you like to roll your bet forward for a chance to double your winnings?: ");
+        } else {
+            System.out.println("Would you like to play again?: ");
+        }
     }
 
 }
