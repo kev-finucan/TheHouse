@@ -31,6 +31,7 @@ public class TheTenSidedDieOfDoom implements Game {
     int betAmount;
     double betMultiplier;
     boolean isWinner;
+    int winnings;
 
     // Methods
     @Override
@@ -68,10 +69,10 @@ public class TheTenSidedDieOfDoom implements Game {
             betMultiplier = setBetMultiplier(rangeMin, rangeMax);
             isWinner = rollDieAndSetIsWInner(rangeMin, rangeMax);
             // If player is a winner, their winnings will be converted to an int, rounded in their favor.
-            updatedBalance = convenience.executeWinLossResults((int) Math.ceil(betAmount * betMultiplier),
-                    currentBalance, betAmount, isWinner);
+            winnings = (int) Math.ceil(betAmount * betMultiplier);
+            updatedBalance = convenience.executeWinLossResults(winnings, currentBalance, betAmount, isWinner);
             betLocked = false; // redefined to allow the player to reset their range and bet amount in additional rounds
-            System.out.println("Would you like to play again: ");
+            System.out.println("Would you like to play again?: ");
             String playAgain = convenience.promptForYesNo(userInput);
             if (playAgain.equals("n")) {
                 isPlaying = false; // Additional rounds is the default

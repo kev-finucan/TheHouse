@@ -78,8 +78,7 @@ public class Prize {
     // Methods
     public int executePrizes(Scanner userInput, int currentBalance) {
         displayPrizes();
-        int updatedBalance = prizesMenu(userInput, currentBalance);
-        return updatedBalance;
+        return prizesMenu(userInput, currentBalance);
     }
 
     public void displayPrizes() {
