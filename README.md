@@ -1,6 +1,6 @@
 # TheHouse
 
-IN PROCESS - All menus, prizes & purchasing functionality, account tracking & 1/4 mini-games implemented and functioning.
+IN PROCESS - All menus, prizes & purchasing functionality, account tracking & 2/4 mini-games implemented and functioning.
 
 The House gives the user/player 100 tokens and tracks a running balance which they can use to bet on 1 of 4 different mini-games of chance and purchase prizes.
 
