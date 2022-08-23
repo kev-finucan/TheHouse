@@ -1,5 +1,7 @@
 package com.KevinFinucan.TheHouse;
 
+import java.util.Scanner;
+
 public class NotYourAverageSlots implements Game {
 
     private static final String name = "Not Your Average Slots";
@@ -16,6 +18,11 @@ public class NotYourAverageSlots implements Game {
     @Override
     public String toString() {
         return name + "\n" + description;
+    }
+
+    @Override
+    public int execute(Scanner userInput, int currentBalance) {
+        return 0;
     }
 
 }

@@ -1,5 +1,7 @@
 package com.KevinFinucan.TheHouse;
 
+import java.util.Scanner;
+
 public class TwentySidedHigherOrLower implements Game {
 
     private static final String name = "Twenty-Sided Higher Or Lower";
@@ -15,6 +17,11 @@ public class TwentySidedHigherOrLower implements Game {
     @Override
     public String toString() {
         return name + "\n" + description;
+    }
+
+    @Override
+    public int execute(Scanner userInput, int currentBalance) {
+        return 0;
     }
 
 }

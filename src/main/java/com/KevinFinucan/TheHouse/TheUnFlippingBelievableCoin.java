@@ -1,5 +1,7 @@
 package com.KevinFinucan.TheHouse;
 
+import java.util.Scanner;
+
 public class TheUnFlippingBelievableCoin implements Game {
 
     private static final String name = "The Un-Flipping-Believable Coin";
@@ -12,9 +14,15 @@ public class TheUnFlippingBelievableCoin implements Game {
                     plus your original bet.
                     """;
 
+
     @Override
     public String toString() {
         return name + "\n" + description;
+    }
+
+    @Override
+    public int execute(Scanner userInput, int currentBalance) {
+        return 0;
     }
 
 }
