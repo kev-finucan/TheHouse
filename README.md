@@ -15,14 +15,14 @@ If you can turn 100 tokens into 10,000, you can use your tokens to obtain a Winn
 certifying, definitively, that you have what it takes to BEAT THE HOUSE.
 """
 
-(fully implemented) The Ten Sided Die of Doom: 
+The Ten Sided Die of Doom: 
 In the The Ten Sided Die of Doom, players bet on the outcome of a ten-sided die roll.
 Choose a range by selecting a low and high value, and an amount that you would like to bet.
 If the ten-sided die roll falls within your selected range, you win! If not, your bet amount is lost.
 Keep in mind - the smaller the range you select, the greater your reward!
 In order to win big, you have to risk big.
 
-(pending implementation) The Un-Flipping-Believable Coin: 
+The Un-Flipping-Believable Coin: 
 In the The The Un-Flipping-Believable Coin, players bet on the outcome of a simple coin toss,
 with the potential to grow your account balance exponentially - Un-Flipping-Believable!
 Every time you correctly guess the outcome of a coin toss, your return doubles.
