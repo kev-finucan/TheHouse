@@ -63,7 +63,7 @@ public class TheUnFlippingBelievableCoin implements Game {
                     String lockBet = convenience.promptForYesNo(userInput);
                     betLocked = (lockBet.equals("y"));
                 }
-            } else if (winningsRolledForward) {
+            } else {
                 while (!betLocked) {
                     coinFlipBet = promptForHeadsOrTails(userInput);
                     System.out.println(

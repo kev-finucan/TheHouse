@@ -157,4 +157,5 @@ public class TheTenSidedDieOfDoom implements Game {
         System.out.println("The House rolled: " + roll);
         return (roll >= rangeMin && roll <= rangeMax); //If the roll is within the bet range, the player is a winner
     }
+
 }
