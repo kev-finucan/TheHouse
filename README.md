@@ -1,6 +1,6 @@
 # TheHouse
 
-IN PROCESS - All menus, prizes & purchasing functionality, account tracking & 2/4 mini-games implemented and functioning.
+IN PROCESS - All menus, prizes & purchasing functionality, account tracking & 3/4 mini-games implemented and functioning.
 
 The House gives the user/player 100 tokens and tracks a running balance which they can use to bet on 1 of 4 different mini-games of chance and purchase prizes.
 
@@ -36,7 +36,7 @@ shapes, colors, numbers, letters, and animals. The player will bet on the result
 Correctly guessing any one of them wins the bet! The more you guess right - the higher the win!
 But watch out; If you miss all five, your bet goes to The House.
 
-(pending implementatation) Twenty-Sided Higher Or Lower: 
+Twenty-Sided Higher Or Lower: 
 In Twenty-Sided Higher Or Lower, players bet whether the next roll of a 20-sided die
 will be higher or lower than the last roll. This is the only game that allows players to maintain
 a statistical advantage. As such, each win will return your bet, but your winnings will not multiply.
