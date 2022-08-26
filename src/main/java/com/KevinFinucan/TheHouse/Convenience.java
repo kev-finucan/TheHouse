@@ -97,7 +97,7 @@ public class Convenience {
         int updatedBalance;
         if (isWinner) {
             System.out.println("Congratulations, you're a winner! " +
-                    winnings + " tokens have been added to your account.");
+                    winnings + " tokens will be added to your account.");
             updatedBalance = currentBalance + winnings;
         } else {
             System.out.println("Oops, looks like The House won this round. Better luck next time!");

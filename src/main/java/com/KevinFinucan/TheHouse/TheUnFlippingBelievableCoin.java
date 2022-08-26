@@ -51,8 +51,8 @@ public class TheUnFlippingBelievableCoin implements Game {
         boolean isPlaying = true; // boolean to allow users to play additional rounds and roll their bet forward
         boolean winningsRolledForward = false; // Set to allow winnings to replace bet for additional rounds
         boolean betLocked = false; // boolean to allow user to review their bet before committing.
+        displayWelcomeMessage();
         while (isPlaying) {
-            displayWelcomeMessage();
             if (!(winningsRolledForward)) {
                 while (!betLocked) {
                     coinFlipBet = promptForHeadsOrTails(userInput);

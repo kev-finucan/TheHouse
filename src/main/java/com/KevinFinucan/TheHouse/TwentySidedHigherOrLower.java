@@ -50,8 +50,8 @@ public class TwentySidedHigherOrLower implements Game {
         boolean isPlaying = true; // boolean to allow users to play additional rounds and roll their bet forward
         boolean winningsRolledForward = false; // Set to allow winnings to replace bet for additional rounds
         boolean betLocked = false; // boolean to allow user to review their bet before committing.
+        displayWelcomeMessage();
         while (isPlaying) {
-            displayWelcomeMessage();
             if (!(winningsRolledForward)) {
                 setStandingRoll();
                 while (!betLocked) {
@@ -72,10 +72,11 @@ public class TwentySidedHigherOrLower implements Game {
                     betLocked = (lockBet.equals("y"));
                 }
             }
-            isWinner = rollDieAndSetIsWInner();
+            // Generates a new roll, sets isWinner, and redefines the standing roll with the new roll.
+            rollDieAndSetIsWInner();
             if (isWinner) {
                 // If player is a winner, their winnings will be converted to an int, rounded in their favor.
-                winnings = (int) Math.ceil(betAmount * 1.5);
+                winnings = (int) Math.ceil(winnings * 1.5);
                 winningsRolledForward = true;
             } // Redefined to allow player to place a fresh bet if replaying after a loss
             else {
@@ -96,7 +97,7 @@ public class TwentySidedHigherOrLower implements Game {
     public String promptForHigherOrLower(Scanner userInput) {
         String response = "";
         while (response.equals("")) {
-            System.out.println("The standing roll is " + standingRoll + "Will you bet the next roll will be " +
+            System.out.println("The standing roll is: " + standingRoll + ". Will you bet the next roll will be " +
                     "'Higher' or 'Lower' (H/L)?: ");
             // Any string starting with 'H/h' is assumed to be higher
             // Any string starting with 'T/t' is assumed to be lower
@@ -129,12 +130,13 @@ public class TwentySidedHigherOrLower implements Game {
    A bound number of 10 is provided in order to generate an int 0-9.
    1 is added to simulate a 10-sided die with values 1-10.
     */
-    public boolean rollDieAndSetIsWInner() {
+    public void rollDieAndSetIsWInner() {
         Random random = new Random();
         int roll = random.nextInt(20) + 1;
         System.out.println("The House rolled: " + roll);
-        return ((roll > standingRoll && higherOrLowerBet.equals("Higher")) ||
-                (roll < standingRoll && higherOrLowerBet.equals("Lower")));
+        isWinner =  ((roll > standingRoll && higherOrLowerBet.equals("Higher")) ||
+                    (roll < standingRoll && higherOrLowerBet.equals("Lower")));
+        standingRoll = roll;
     }
 
     public void setStandingRoll() {

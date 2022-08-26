@@ -47,8 +47,8 @@ public class TheTenSidedDieOfDoom implements Game {
         int updatedBalance = currentBalance;
         boolean isPlaying = true; // boolean to allow users to play additional rounds without returning to the main menu
         boolean betLocked = false; // boolean to allow user to review their range and bet before committing.
+        displayWelcomeMessage();
         while (isPlaying) {
-            displayWelcomeMessage();
             while (!betLocked) {
                 rangeMin = promptForLowHighValue(userInput, "lowest");
                 rangeMax = promptForLowHighValue(userInput, "highest");

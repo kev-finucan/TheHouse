@@ -125,7 +125,7 @@ public class TheHouseGame {
             case 1 -> userAccount.setBalance(theTenSidedDieOfDoom.execute(userInput, userAccount.getBalanceInt()));
             case 2 -> userAccount.setBalance(theUnFlippingBelievableCoin.execute(userInput, userAccount.getBalanceInt()));
             case 3 -> System.exit(0); // Not Your Average Slots implementation to come
-            case 4 -> System.exit(0); // Twenty-Sided Higher or Lower implementation to come
+            case 4 -> userAccount.setBalance(twentySidedHigherOrLower.execute(userInput, userAccount.getBalanceInt()));
         }
     }
 }
