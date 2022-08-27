@@ -18,7 +18,7 @@ public class TheHouseGame {
      */
     Convenience convenience = new Convenience();
     Prize prize = new Prize();
-    Account userAccount = new Account();
+    Account playerAccount = new Account();
     TheTenSidedDieOfDoom theTenSidedDieOfDoom = new TheTenSidedDieOfDoom();
     TheUnFlippingBelievableCoin theUnFlippingBelievableCoin = new TheUnFlippingBelievableCoin();
     NotYourAverageSlots notYourAverageSlots = new NotYourAverageSlots();
@@ -45,7 +45,7 @@ public class TheHouseGame {
         while (true) {
             switch (menuOptionInt) {
                 case 1 -> {
-                    userAccount.getBalanceString(); // Prints the player's balance of tokens; Default is 100.
+                    playerAccount.getBalanceString(); // Prints the player's balance of tokens; Default is 100.
                     menuOptionInt = mainMenu(userInput);
                 }
                 case 2 -> {
@@ -61,7 +61,7 @@ public class TheHouseGame {
                     menuOptionInt = mainMenu(userInput);
                 }
                 case 4 -> {
-                    userAccount.setBalance(prize.executePrizes(userInput, userAccount.getBalanceInt()));
+                    prize.executePrizes(userInput, playerAccount);
                     menuOptionInt = mainMenu(userInput);
                 }
                 case 5 -> { // This option of for scaredy-cats who know they'll never beat The House.
@@ -120,10 +120,10 @@ public class TheHouseGame {
             gameToPlay = convenience.promptForInt(userInput);
         }
         switch (gameToPlay) {
-            case 1 -> theTenSidedDieOfDoom.execute(userInput, userAccount);
-            case 2 -> theUnFlippingBelievableCoin.execute(userInput, userAccount);
-            case 3 -> notYourAverageSlots.execute(userInput, userAccount);
-            case 4 -> twentySidedHigherOrLower.execute(userInput, userAccount);
+            case 1 -> theTenSidedDieOfDoom.execute(userInput, playerAccount);
+            case 2 -> theUnFlippingBelievableCoin.execute(userInput, playerAccount);
+            case 3 -> notYourAverageSlots.execute(userInput, playerAccount);
+            case 4 -> twentySidedHigherOrLower.execute(userInput, playerAccount);
         }
     }
 }

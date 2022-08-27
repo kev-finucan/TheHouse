@@ -76,65 +76,65 @@ public class Prize {
     }
 
     // Methods
-    public int executePrizes(Scanner userInput, int currentBalance) {
-        displayPrizes();
-        return prizesMenu(userInput, currentBalance);
-    }
-
-    public void displayPrizes() {
-        System.out.println(AVAILABLE_PRIZES);
-    }
-
-    // prizeMenu is the inner menu for prizes. Players can choose to use their tokens to purchase a prize
-    public int prizesMenu(Scanner userInput, int currentBalance) {
-        int updatedBalance = currentBalance;
-        System.out.println("Would you like to purchase a prize with your tokens?: ");
-        String menuOptionString = convenience.promptForYesNo(userInput);
-        switch (menuOptionString) {
-            case "y" -> updatedBalance = purchasePrize(userInput, currentBalance);
-            case "n" -> System.out.println("Okay, maybe later. Remember to bet on games to win tokens. Good luck!");
+    public void executePrizes(Scanner userInput, Account playerAccount) {
+        boolean purchasingPrizes = true; // Allows users to purchase multiple prizes
+        while (purchasingPrizes) {
+            displayPrizes();
+            prizesMenu(userInput, playerAccount);
+            System.out.println("Are you finished looking at prizes?: ");
+            String userResponse = convenience.promptForYesNo(userInput);
+            purchasingPrizes = (userResponse.equals("n")); // Exits loop if users are finished reviewing prizes
         }
-        return updatedBalance;
     }
+
+        public void displayPrizes () {
+            System.out.println(AVAILABLE_PRIZES);
+        }
+
+        // prizeMenu is the inner menu for prizes. Players can choose to use their tokens to purchase a prize
+        public void prizesMenu (Scanner userInput, Account playerAccount){
+            System.out.println("Would you like to purchase a prize with your tokens?: ");
+            String menuOptionString = convenience.promptForYesNo(userInput);
+            switch (menuOptionString) {
+                case "y" -> purchasePrize(userInput, playerAccount);
+                case "n" -> System.out.println("Okay, maybe later. Remember to bet on games to win tokens. Good luck!");
+            }
+        }
 
     /*
   purchasePrize is an inner prize menu that allows players to select a prize for purchase,
   verifies that they have enough tokens to purchase the prize,
   and returns their prize (if they have enough tokens) or directs them to play games to win more tokens.
    */
-    public int purchasePrize(Scanner userInput, int currentBalance) {
-        int updatedBalance = currentBalance;
-        System.out.println("Which prize would you like to purchase (1-5): ");
-        int prizeSelection = convenience.promptForInt(userInput);
-        while (!(prizeSelection == 1 || prizeSelection == 2 || prizeSelection == 3 ||
-                prizeSelection == 4 || prizeSelection == 5)) {
-            System.out.println("Please enter a valid prize selection: ");
-            prizeSelection = convenience.promptForInt(userInput);
+        public void purchasePrize (Scanner userInput, Account playerAccount){
+            System.out.println("Which prize would you like to purchase (1-5): ");
+            int prizeSelection = convenience.promptForInt(userInput);
+            while (!(prizeSelection == 1 || prizeSelection == 2 || prizeSelection == 3 ||
+                    prizeSelection == 4 || prizeSelection == 5)) {
+                System.out.println("Please enter a valid prize selection: ");
+                prizeSelection = convenience.promptForInt(userInput);
+            }
+            switch (prizeSelection) {
+                case 1 -> purchasePrize(playerAccount, PRIZE_1_COST, PRIZE_1);
+                case 2 -> purchasePrize(playerAccount, PRIZE_2_COST, PRIZE_2);
+                case 3 -> purchasePrize(playerAccount, PRIZE_3_COST, PRIZE_3);
+                case 4 -> purchasePrize(playerAccount, PRIZE_4_COST, PRIZE_4);
+                case 5 -> purchasePrize(playerAccount, PRIZE_5_COST, PRIZE_5);
+            }
         }
-        switch (prizeSelection) {
-            case 1 -> updatedBalance = purchasePrize(currentBalance, PRIZE_1_COST, PRIZE_1);
-            case 2 -> updatedBalance = purchasePrize(currentBalance, PRIZE_2_COST, PRIZE_2);
-            case 3 -> updatedBalance = purchasePrize(currentBalance, PRIZE_3_COST, PRIZE_3);
-            case 4 -> updatedBalance = purchasePrize(currentBalance, PRIZE_4_COST, PRIZE_4);
-            case 5 -> updatedBalance = purchasePrize(currentBalance, PRIZE_5_COST, PRIZE_5);
-        }
-        return updatedBalance;
-    }
 
     /*
     This method verifies players have enough tokens to purchase the prize they have selected and adjusts their
     running balance if a prize is purchased.
      */
-    public int purchasePrize(int currentBalance, int prizeCost, String prizeString) {
-        int updatedBalance = currentBalance;
-        if (currentBalance >= prizeCost) {
-            System.out.println("Please enjoy your new " + prizeString + "!");
-            updatedBalance -= prizeCost;
-        } else { // The House is not your friend, and does not offer prizes on credit.
-            System.out.println(
-                    "Sorry, you don't have enough tokens for this prize. " +
-                            "Remember to bet on games to win tokens. Good luck!" + "\n");
+        public void purchasePrize (Account playerAccount,int prizeCost, String prizeString){
+            if (playerAccount.getBalanceInt() >= prizeCost) {
+                System.out.println("Please enjoy your new " + prizeString + "!");
+                playerAccount.setBalance(playerAccount.getBalanceInt() - prizeCost);
+            } else { // The House is not your friend, and does not offer prizes on credit.
+                System.out.println(
+                        "Sorry, you don't have enough tokens for this prize. " +
+                                "Remember to bet on games to win tokens. Good luck!" + "\n");
+            }
         }
-        return updatedBalance;
     }
-}
