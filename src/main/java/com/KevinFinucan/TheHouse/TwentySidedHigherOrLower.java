@@ -31,7 +31,6 @@ public class TwentySidedHigherOrLower implements Game {
     boolean isWinner;
     int winnings = 0; // Instantiated at zero to allow for differentiating first round w/additional rounds.
     String higherOrLowerBet;
-    String higherOrLowerResults;
     int betAmount;
 
 
@@ -45,8 +44,8 @@ public class TwentySidedHigherOrLower implements Game {
     }
 
     @Override
-    public int execute(Scanner userInput, int currentBalance) {
-        int updatedBalance = currentBalance;
+    public void execute(Scanner userInput, Account playerAccount) {
+        int rollingBalance = playerAccount.getBalanceInt();
         boolean isPlaying = true; // boolean to allow users to play additional rounds and roll their bet forward
         boolean winningsRolledForward = false; // Set to allow winnings to replace bet for additional rounds
         boolean betLocked = false; // boolean to allow user to review their bet before committing.
@@ -56,7 +55,7 @@ public class TwentySidedHigherOrLower implements Game {
                 setStandingRoll();
                 while (!betLocked) {
                     higherOrLowerBet = promptForHigherOrLower(userInput);
-                    betAmount = convenience.promptForBet(userInput, currentBalance);
+                    betAmount = convenience.promptForBet(userInput, playerAccount.getBalanceInt());
                     winnings = betAmount;
                     System.out.println("Would you like to lock in your bet of " + betAmount + " for the next roll to " +
                             "be " + higherOrLowerBet + " than " + standingRoll + "?");
@@ -66,7 +65,7 @@ public class TwentySidedHigherOrLower implements Game {
             } else {
                 while (!betLocked) {
                     higherOrLowerBet = promptForHigherOrLower(userInput);
-                    System.out.println("Would you like to lock in your bet of " + betAmount + " for the next roll to " +
+                    System.out.println("Would you like to lock in your bet of " + rollingBalance + " for the next roll to " +
                             "be " + higherOrLowerBet + " than " + standingRoll + "?");
                     String lockBet = convenience.promptForYesNo(userInput);
                     betLocked = (lockBet.equals("y"));
@@ -82,15 +81,21 @@ public class TwentySidedHigherOrLower implements Game {
             else {
                 winningsRolledForward = false;
             }
-            updatedBalance = convenience.executeWinLossResults(winnings, currentBalance, betAmount, isWinner);
+            rollingBalance = convenience.executeWinLossResults
+                    (winnings, playerAccount.getBalanceInt(), betAmount, isWinner);
             betLocked = false; // redefined to allow the player to reset their bet in additional rounds
             playAgainPrompt(isWinner);
             String playAgain = convenience.promptForYesNo(userInput);
             if (playAgain.equals("n")) {
                 isPlaying = false; // Additional rounds is the default
             }
+            if (!isWinner) {
+                playerAccount.setBalance(rollingBalance);
+            }
         }
-        return updatedBalance;
+        if (isWinner) {
+            playerAccount.setBalance(rollingBalance);
+        }
     }
 
     // Prompt for h/t enforces that the player's entry must be h/t
@@ -134,8 +139,8 @@ public class TwentySidedHigherOrLower implements Game {
         Random random = new Random();
         int roll = random.nextInt(20) + 1;
         System.out.println("The House rolled: " + roll);
-        isWinner =  ((roll > standingRoll && higherOrLowerBet.equals("Higher")) ||
-                    (roll < standingRoll && higherOrLowerBet.equals("Lower")));
+        isWinner = ((roll > standingRoll && higherOrLowerBet.equals("Higher")) ||
+                (roll < standingRoll && higherOrLowerBet.equals("Lower")));
         standingRoll = roll;
     }
 

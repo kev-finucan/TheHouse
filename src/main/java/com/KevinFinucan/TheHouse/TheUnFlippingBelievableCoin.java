@@ -46,8 +46,8 @@ public class TheUnFlippingBelievableCoin implements Game {
     }
 
     @Override
-    public int execute(Scanner userInput, int currentBalance) {
-        int updatedBalance = currentBalance;
+    public void execute(Scanner userInput, Account playerAccount) {
+        int rollingBalance = playerAccount.getBalanceInt();
         boolean isPlaying = true; // boolean to allow users to play additional rounds and roll their bet forward
         boolean winningsRolledForward = false; // Set to allow winnings to replace bet for additional rounds
         boolean betLocked = false; // boolean to allow user to review their bet before committing.
@@ -56,9 +56,9 @@ public class TheUnFlippingBelievableCoin implements Game {
             if (!(winningsRolledForward)) {
                 while (!betLocked) {
                     coinFlipBet = promptForHeadsOrTails(userInput);
-                    betAmount = convenience.promptForBet(userInput, currentBalance);
+                    betAmount = convenience.promptForBet(userInput, playerAccount.getBalanceInt());
                     winnings = betAmount;
-                    System.out.println("Would you like to lock in your bet of " + betAmount + " for the coin to " +
+                    System.out.println("Would you like to lock in your bet of " + rollingBalance + " for the coin to " +
                             "land on " + coinFlipBet + "?");
                     String lockBet = convenience.promptForYesNo(userInput);
                     betLocked = (lockBet.equals("y"));
@@ -77,17 +77,24 @@ public class TheUnFlippingBelievableCoin implements Game {
                 winnings *= 2;
                 winningsRolledForward = true;
             } // Redefined to allow player to place a fresh bet if replaying after a loss
-            else { winningsRolledForward = false;
+            else {
+                winningsRolledForward = false;
             }
-            updatedBalance = convenience.executeWinLossResults(winnings, currentBalance, betAmount, isWinner);
+            rollingBalance = convenience.executeWinLossResults
+                    (winnings, playerAccount.getBalanceInt(), betAmount, isWinner);
             betLocked = false; // redefined to allow the player to reset their bet in additional rounds
             playAgainPrompt(isWinner);
             String playAgain = convenience.promptForYesNo(userInput);
             if (playAgain.equals("n")) {
                 isPlaying = false; // Additional rounds is the default
             }
+            if (!isWinner) {
+                playerAccount.setBalance(rollingBalance);
+            }
         }
-        return updatedBalance;
+        if (isWinner) {
+            playerAccount.setBalance(rollingBalance);
+        }
     }
 
     // Prompt for h/t enforces that the player's entry must be h/t

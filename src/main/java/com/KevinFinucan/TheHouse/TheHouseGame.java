@@ -94,10 +94,8 @@ public class TheHouseGame {
                         (5) Flee The House
                         """);
 
-        while (!(menuOptionInt == 1 || menuOptionInt == 2 || menuOptionInt == 3 ||
-                menuOptionInt == 4 || menuOptionInt == 5)) {
-            menuOptionInt = convenience.promptForInt(userInput);
-        }
+        menuOptionInt = convenience.promptForInt(userInput);
+        menuOptionInt = convenience.verifySelectionIsValidOption(menuOptionInt, 5, userInput);
         return menuOptionInt;
     }
 
@@ -122,10 +120,10 @@ public class TheHouseGame {
             gameToPlay = convenience.promptForInt(userInput);
         }
         switch (gameToPlay) {
-            case 1 -> userAccount.setBalance(theTenSidedDieOfDoom.execute(userInput, userAccount.getBalanceInt()));
-            case 2 -> userAccount.setBalance(theUnFlippingBelievableCoin.execute(userInput, userAccount.getBalanceInt()));
-            case 3 -> System.exit(0); // Not Your Average Slots implementation to come
-            case 4 -> userAccount.setBalance(twentySidedHigherOrLower.execute(userInput, userAccount.getBalanceInt()));
+            case 1 -> theTenSidedDieOfDoom.execute(userInput, userAccount);
+            case 2 -> theUnFlippingBelievableCoin.execute(userInput, userAccount);
+            case 3 -> notYourAverageSlots.execute(userInput, userAccount);
+            case 4 -> twentySidedHigherOrLower.execute(userInput, userAccount);
         }
     }
 }

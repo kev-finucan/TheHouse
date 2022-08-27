@@ -43,8 +43,7 @@ public class TheTenSidedDieOfDoom implements Game {
         System.out.println(WELCOME_MESSAGE);
     }
 
-    public int execute(Scanner userInput, int currentBalance) {
-        int updatedBalance = currentBalance;
+    public void execute(Scanner userInput, Account playerAccount) {
         boolean isPlaying = true; // boolean to allow users to play additional rounds without returning to the main menu
         boolean betLocked = false; // boolean to allow user to review their range and bet before committing.
         displayWelcomeMessage();
@@ -53,7 +52,7 @@ public class TheTenSidedDieOfDoom implements Game {
                 rangeMin = promptForLowHighValue(userInput, "lowest");
                 rangeMax = promptForLowHighValue(userInput, "highest");
                 enforceAccurateMinMaxRelationship(); // enforces maxRange must be >= minRange & switches them as needed
-                betAmount = convenience.promptForBet(userInput, currentBalance);
+                betAmount = convenience.promptForBet(userInput, playerAccount.getBalanceInt());
                 if (rangeMin == rangeMax) {
                     System.out.println(
                             "Would you like to lock in your bet of " + betAmount + " tokens for the die to land " +
@@ -70,7 +69,8 @@ public class TheTenSidedDieOfDoom implements Game {
             isWinner = rollDieAndSetIsWInner(rangeMin, rangeMax);
             // If player is a winner, their winnings will be converted to an int, rounded in their favor.
             winnings = (int) Math.ceil(betAmount * betMultiplier);
-            updatedBalance = convenience.executeWinLossResults(winnings, currentBalance, betAmount, isWinner);
+            playerAccount.setBalance
+                    (convenience.executeWinLossResults(winnings, playerAccount.getBalanceInt(), betAmount, isWinner));
             betLocked = false; // redefined to allow the player to reset their range and bet amount in additional rounds
             System.out.println("Would you like to play again?: ");
             String playAgain = convenience.promptForYesNo(userInput);
@@ -78,7 +78,6 @@ public class TheTenSidedDieOfDoom implements Game {
                 isPlaying = false; // Additional rounds is the default
             }
         }
-        return updatedBalance;
     }
 
     /*
@@ -130,7 +129,7 @@ public class TheTenSidedDieOfDoom implements Game {
             case 9 -> {
                 System.out.println(
                         "You're a cheeky one, aren't you? You may be a winner, but bragging rights " +
-                        "are all you will get for this round!");
+                                "are all you will get for this round!");
                 betMultiplier = 0;
             }
             case 8 -> betMultiplier = 1;

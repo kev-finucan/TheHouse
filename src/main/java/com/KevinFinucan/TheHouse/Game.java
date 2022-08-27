@@ -10,7 +10,7 @@ public interface Game {
      description, and implementation are entirely unique. Mini-games are more like instances of game than children.
      */
 
-    int execute(Scanner userInput, int currentBalance);
+    void execute(Scanner userInput, Account account);
 
     String toString();
 }

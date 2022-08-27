@@ -93,8 +93,8 @@ public class Prize {
         switch (menuOptionString) {
             case "y" -> updatedBalance = purchasePrize(userInput, currentBalance);
             case "n" -> System.out.println("Okay, maybe later. Remember to bet on games to win tokens. Good luck!");
-            }
-            return updatedBalance;
+        }
+        return updatedBalance;
     }
 
     /*
