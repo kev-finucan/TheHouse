@@ -1,8 +1,6 @@
 # TheHouse
 
-IN PROCESS - All menus, prizes & purchasing functionality, account tracking & 3/4 mini-games implemented and functioning.
-
-The House gives the user/player 100 tokens and tracks a running balance which they can use to bet on 1 of 4 different mini-games of chance and purchase prizes.
+he House gives the user/player 100 tokens and tracks a running balance which they can use to bet on any of 4 different mini-games of chance and/or purchase prizes.
 
 """
 WELCOME to The HOUSE! You've heard the stories; The House always wins.
@@ -29,7 +27,7 @@ Every time you correctly guess the outcome of a coin toss, your return doubles.
 But watch out - as soon as you miss a coin toss, you lose everything you've gained,
 plus your original bet.
 
-(pending implementation) Not Your Average Slots: 
+Not Your Average Slots: 
 In Not Your Average Slots, players place 5 combined bets on the outcome of a slot machine,
 with the potential to win five different ways! The five rows of the slot machine contain
 shapes, colors, numbers, letters, and animals. The player will bet on the result of each one.
