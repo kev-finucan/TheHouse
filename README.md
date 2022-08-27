@@ -1,6 +1,6 @@
 # TheHouse
 
-he House gives the user/player 100 tokens and tracks a running balance which they can use to bet on any of 4 different mini-games of chance and/or purchase prizes.
+The House gives the user/player 100 tokens and tracks a running balance which they can use to bet on any of 4 different mini-games of chance and/or purchase prizes.
 
 """
 WELCOME to The HOUSE! You've heard the stories; The House always wins.
